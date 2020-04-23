@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_ratios
+      author: rust
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: ratios
+            constraintName: fk_ratios_stocks
+        - dropColumn:
+            tableName: ratios
+            columnName: stock_id
+        - addColumn:
+            tableName: ratios
+            columns:
+            - column:
+                name: bps
+                type: FLOAT
+            - column:
+                name: roe
+                type: FLOAT
+            - column:
+                name: rote
+                type: FLOAT
+            - column:
+                name: roa
+                type: FLOAT
+            - column:
+                name: roi
+                type: FLOAT
+            - column:
+                name: cur_ratio
+                type: FLOAT
+            - column:
+                name: ltdebt_to_cap
+                type: FLOAT
+            - column:
+                name: debt_to_equity
+                type: FLOAT
+  - changeSet:
+      id: change_table_stocks
+      author: rust
+      changes:
+        - addColumn:
+            tableName: stocks
+            columns:
+              - column:
+                  name: ratio_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_stocks_ratios
+                    references: ratios(id)
+                    onDelete: RESTRICT
+                    onUpdate: CASCADE
+                    nullable: true

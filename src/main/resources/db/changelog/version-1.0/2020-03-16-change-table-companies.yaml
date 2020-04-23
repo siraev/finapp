@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_companies
+      author: rust
+      changes:
+        - addColumn:
+            tableName: companies
+            columns:
+              - column:
+                  name: earning_url
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: false
+                    nullable: true

@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_extremums
+      author: rust
+      changes:
+        - createTable:
+            tableName: extremums
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: down_from_max
+                  type: FLOAT
+              - column:
+                  name: up_from_min_2018
+                  type: FLOAT
+              - column:
+                  name: up_from_min_2016
+                  type: FLOAT
+              - column:
+                  name: up_from_min_2008
+                  type: FLOAT
+              - column:
+                  name: up_from_min_2000
+                  type: FLOAT
+  - changeSet:
+      id: create_key_stocks_extremums
+      author: rust
+      changes:
+        - addColumn:
+            tableName: stocks
+            columns:
+              - column:
+                  name: extremum_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_stocks_extremums
+                    references: extremums(id)
+                    onDelete: RESTRICT
+                    onUpdate: CASCADE
+                    nullable: true

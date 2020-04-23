@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_earnings_year
+      author: rust
+      changes:
+        - dropNotNullConstraint:
+            tableName: earnings
+            columnName: year
+            columnDataType: INTEGER

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_ratios_pe_ttm
+      author: rust
+      changes:
+        - addColumn:
+            tableName: ratios
+            columns:
+              - column:
+                  name: pe_ttm
+                  type: FLOAT

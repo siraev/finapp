@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_earnings
+      author: rust
+      changes:
+        - addColumn:
+            tableName: earnings
+            columns:
+              - column:
+                  name: period
+                  type: VARCHAR(20)
+              - column:
+                  name: date
+                  type: DATE

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: rename_table_stock_quotes
+      author: rust
+      changes:
+        - renameTable:
+            oldTableName: stocks_quotes
+            newTableName: quotes

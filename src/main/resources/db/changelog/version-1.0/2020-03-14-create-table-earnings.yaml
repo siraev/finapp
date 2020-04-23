@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_earnings
+      author: rust
+      changes:
+        - createTable:
+            tableName: earnings
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: company_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_earnings_companies
+                    references: companies(id)
+                    onDelete: RESTRICT
+                    onUpdate: CASCADE
+              - column:
+                  name: year
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: eps
+                  type: FLOAT
+                  constraints:
+                    nullable: false

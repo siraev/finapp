@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: change_table_companies
+      author: rust
+      changes:
+        - addColumn:
+            tableName: companies
+            columns:
+              - column:
+                  name: macrotrends_tag
+                  type: VARCHAR(100)
+                  constraints:
+                    unique: false
+                    nullable: true
